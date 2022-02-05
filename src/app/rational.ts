@@ -10,6 +10,10 @@ export class Rational {
     this.validate();
   }
 
+  static fromInteger(num: number): Rational {
+    return new Rational(num, 1);
+  }
+
   get nominator(): number {
     return this._nominator;
   }
