@@ -1,4 +1,4 @@
-import { retry } from "rxjs/operators";
+import { retry } from 'rxjs/operators';
 
 export class Rational {
   private _nominator: number;
@@ -10,20 +10,20 @@ export class Rational {
     this.validate();
   }
 
-  get nominator() : number {
+  get nominator(): number {
     return this._nominator;
   }
 
-  get denominator() : number {
+  get denominator(): number {
     return this._nominator;
   }
 
-  negate() : Rational {
+  negate(): Rational {
     return new Rational(-this._nominator, this._denominator);
   }
 
-  add(b: Rational) : Rational {
-    const lcm = this.lcm(this._denominator,b._denominator);
+  add(b: Rational): Rational {
+    const lcm = this.lcm(this._denominator, b._denominator);
     this.changeDenominator(lcm);
     b.changeDenominator(lcm);
     const res = new Rational(this._nominator + b._nominator, lcm);
@@ -54,8 +54,16 @@ export class Rational {
     }
   }
 
-  toString(): String {
+  toString(): string {
     return `${this._nominator}/${this._denominator}`;
+  }
+
+  toNumber(): number {
+    return this._nominator / this._denominator;
+  }
+
+  floor(): number {
+    return Math.floor(this.toNumber());
   }
 
   changeDenominator(newDenomitor: number) {
@@ -65,13 +73,13 @@ export class Rational {
     this.validate();
   }
 
-  private lcm(x: number, y:number) : number {
-    return x*y / this.gcd(x,y);
+  private lcm(x: number, y: number): number {
+    return (x * y) / this.gcd(x, y);
   }
-  private gcd(x: number, y:number) : number {
+  private gcd(x: number, y: number): number {
     x = Math.abs(x);
     y = Math.abs(y);
-    while(y) {
+    while (y) {
       var t = y;
       y = x % y;
       x = t;
