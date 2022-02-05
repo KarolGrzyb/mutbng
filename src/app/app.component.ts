@@ -9,8 +9,6 @@ import {Synth} from 'tone'
 export class AppComponent  {
   name = 'Angular ' + VERSION.major;
   constructor() {
-   const sy = new Synth();
-   const d = sy.toDestination();
-   d.triggerAttackRelease("c5","8n");
+
   }
 }
