@@ -4,7 +4,7 @@ import { Rational } from "./rational";
 import { ValueControler } from "./value-controler";
 
 export class Fragment {
-  bpm: ValueControler<Rational>;
+  bpm: number;
   key: Pitch;
   timeSignature: Rational;
   notes: Note[];
