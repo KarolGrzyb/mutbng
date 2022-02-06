@@ -35,6 +35,12 @@ export class Rational {
     return res;
   }
 
+  multiplyByInteger(x: number): Rational {
+    const res = new Rational(x * this._nominator, this._denominator);
+    res.simplify();
+    return res;
+  }
+
   minus(b: Rational): Rational {
     return this.add(b.negate());
   }

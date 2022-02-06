@@ -30,6 +30,12 @@ export class Pitch {
     return new Pitch(Rational.fromInteger(ind));
   }
 
+  static fromNoteNameAndOctave(name: string, octave: number): Pitch {
+    const res = this.fromNoteName(name);
+    res._semisFromC1.add(Rational.fromInteger(12));
+    return res;
+  }
+
   octave(): number {
     return Math.floor(this._semisFromC1.toNumber() / 12) + 1;
   }
@@ -42,6 +48,11 @@ export class Pitch {
 
   toString(): string {
     return this.noteName() + this.octave();
+  }
+
+  toHertz(a4Hertz: number): number {
+    const semiToneDiff = this._semisFromC1.minus(Pitch.fromNoteNameAndOctave("A",4)._semisFromC1).toNumber();
+    return a4Hertz * Math.pow(2,semiToneDiff/12.);
   }
 
   get semisFromC1(): Rational {
