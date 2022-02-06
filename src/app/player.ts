@@ -18,6 +18,7 @@ export class Player {
     Transport.bpm.setValueAtTime(piece.initialBpm,0);
     piece.fragments.forEach(fragment=>{
         const fragmentTime = offset.add(fragment.time);
+        
     });
   }
 
